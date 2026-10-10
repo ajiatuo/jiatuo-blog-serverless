@@ -1,0 +1,470 @@
+/* ============================================================
+   版面风格 layouts.css
+   data-layout="taiji" | "flower" | "darkgold" | "wabi"
+   与 data-theme（色调主题）正交，可叠加：
+   - 版面风格管布局/纹理/质感与基础氛围
+   - 色调主题管主色调（--theme-* / --lime 等点缀变量仍生效）
+   本文件在 themes.css 之后引入，:root[data-layout] 与
+   :root[data-theme] 同级特性时按源码顺序生效（本文件优先）。
+   卡片级规则以 html[data-layout] .bento-grid 为前缀，仅影响主页。
+   一屏布局、卡片拖拽、页脚透明均不受影响。
+   ============================================================ */
+
+/* ================= 太极九宫 =================
+   米白底 · 墨字 · 朱砂点睛 · 回形双框 · 中宫朱砂强调 */
+:root[data-layout="taiji"] {
+  --ink: #23201a;
+  --muted: #7c7462;
+  --paper: #f8f4ea;
+  --card: #fffef9;
+  --line: #d8d0ba;
+  --layout-accent: #b5362a;
+}
+html[data-layout="taiji"] .site-shell {
+  background:
+    radial-gradient(
+      1100px 420px at 50% -6%,
+      rgba(181, 54, 42, 0.07),
+      transparent 62%
+    ),
+    radial-gradient(
+      900px 500px at 88% 108%,
+      rgba(35, 32, 26, 0.05),
+      transparent 60%
+    ),
+    var(--paper);
+}
+html[data-layout="taiji"] .bento-grid .card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  /* 回形纹式双框 */
+  box-shadow:
+    inset 0 0 0 1px var(--card),
+    inset 0 0 0 2px #e9e1cb,
+    0 3px 14px rgba(35, 32, 26, 0.08);
+}
+html[data-layout="taiji"] .bento-grid .eyebrow {
+  color: var(--layout-accent);
+}
+/* 中宫（中央位置）朱砂强调：按位置选择，拖拽排序后仍是中央 */
+html[data-layout="taiji"] .bento-grid .middle-row > :nth-child(2) {
+  position: relative;
+  outline: 2px solid var(--layout-accent);
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+/* 中宫太极阴阳水印（淡雅，不遮挡内容） */
+html[data-layout="taiji"] .bento-grid .middle-row > :nth-child(2)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  transform: translate(-50%, -50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23fffdf7'/%3E%3Cpath d='M50 4a46 46 0 0 1 0 92 23 23 0 0 1 0-46 23 23 0 0 0 0-46z' fill='%2323201a'/%3E%3Ccircle cx='50' cy='27' r='6.5' fill='%23fffdf7'/%3E%3Ccircle cx='50' cy='73' r='6.5' fill='%2323201a'/%3E%3Ccircle cx='50' cy='50' r='46' fill='none' stroke='%2323201a' stroke-width='5'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
+}
+html[data-layout="taiji"] .bento-grid .card h2 {
+  letter-spacing: 0.05em;
+}
+/* 品牌名后的点染朱砂 */
+html[data-layout="taiji"] .site-header .brand i {
+  color: var(--layout-accent);
+}
+/* 主页主按钮朱砂 */
+html[data-layout="taiji"] .bento-grid .button.dark {
+  background: var(--layout-accent);
+  color: #fff8f0;
+}
+/* 宣纸底纹（极淡，纸感） */
+html[data-layout="taiji"] .site-shell {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.45 0 0 0 0 0.40 0 0 0 0 0.32 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(
+      1100px 420px at 50% -6%,
+      rgba(181, 54, 42, 0.07),
+      transparent 62%
+    ),
+    radial-gradient(
+      900px 500px at 88% 108%,
+      rgba(35, 32, 26, 0.05),
+      transparent 60%
+    );
+}
+/* 页眉品牌太极标 */
+html[data-layout="taiji"] .site-header .brand::before {
+  content: "";
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  margin-right: 9px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23fffdf7'/%3E%3Cpath d='M50 4a46 46 0 0 1 0 92 23 23 0 0 1 0-46 23 23 0 0 0 0-46z' fill='%2323201a'/%3E%3Ccircle cx='50' cy='27' r='6.5' fill='%23fffdf7'/%3E%3Ccircle cx='50' cy='73' r='6.5' fill='%2323201a'/%3E%3Ccircle cx='50' cy='50' r='46' fill='none' stroke='%2323201a' stroke-width='5'/%3E%3C/svg%3E") center/contain no-repeat;
+  vertical-align: -5px;
+}
+/* 卡片朱砂角饰 */
+html[data-layout="taiji"] .bento-grid .card::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 34px;
+  height: 34px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cg fill='none' stroke='%23b5362a' stroke-width='1.6' opacity='0.65'%3E%3Cpath d='M34 2v12M34 2H22'/%3E%3Cpath d='M28 2v7M28 2h-5' opacity='0.7'/%3E%3Cpath d='M34 9 22 21M31 12l-6 6' opacity='0.45'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+  pointer-events: none;
+}
+/* 播放按钮朱砂 */
+html[data-layout="taiji"] .mp-play,
+html[data-layout="taiji"] .mpb-play,
+html[data-layout="taiji"] .mbb-play {
+  background: var(--layout-accent);
+  color: #fff8f0;
+}
+
+/* ================= 生命之花 =================
+   奶白底 · 生命之花几何水印 · 鎏金细线 · 大圆角 */
+:root[data-layout="flower"] {
+  --ink: #3d3830;
+  --muted: #8a7f6c;
+  --paper: #faf6ec;
+  --card: #fffdf8;
+  --line: #e0d3b8;
+  --layout-gold: #b98f4e;
+}
+html[data-layout="flower"] .site-shell {
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='1000' viewBox='0 0 1000 1000'%3E%3Cg fill='none' stroke='%23b98f4e' stroke-width='2.5' opacity='0.3'%3E%3Ccircle cx='500' cy='500' r='160'/%3E%3Ccircle cx='660' cy='500' r='160'/%3E%3Ccircle cx='580' cy='639' r='160'/%3E%3Ccircle cx='420' cy='639' r='160'/%3E%3Ccircle cx='340' cy='500' r='160'/%3E%3Ccircle cx='420' cy='361' r='160'/%3E%3Ccircle cx='580' cy='361' r='160'/%3E%3Ccircle cx='820' cy='500' r='160'/%3E%3Ccircle cx='660' cy='777' r='160'/%3E%3Ccircle cx='340' cy='777' r='160'/%3E%3Ccircle cx='180' cy='500' r='160'/%3E%3Ccircle cx='340' cy='223' r='160'/%3E%3Ccircle cx='660' cy='223' r='160'/%3E%3Ccircle cx='740' cy='639' r='160'/%3E%3Ccircle cx='500' cy='777' r='160'/%3E%3Ccircle cx='260' cy='639' r='160'/%3E%3Ccircle cx='260' cy='361' r='160'/%3E%3Ccircle cx='500' cy='223' r='160'/%3E%3Ccircle cx='740' cy='361' r='160'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 1000px 1000px;
+  background-position: center 18%;
+  background-repeat: no-repeat;
+}
+html[data-layout="flower"] .bento-grid .card {
+  background: var(--card);
+  border: 1px solid var(--layout-gold);
+  border-radius: 22px;
+  /* 画框式双线：外框 + 内侧鎏金线 */
+  box-shadow:
+    inset 0 0 0 3px var(--card),
+    inset 0 0 0 4px rgba(185, 143, 78, 0.55),
+    0 6px 20px rgba(185, 143, 78, 0.14);
+}
+/* 卡片四角鎏金回纹饰（旋转对称，一图四用） */
+html[data-layout="flower"] .bento-grid .card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg fill='none' stroke='%23b98f4e' stroke-width='1.4' opacity='0.85'%3E%3Crect x='3' y='3' width='14' height='14'/%3E%3Crect x='7' y='7' width='6' height='6'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg fill='none' stroke='%23b98f4e' stroke-width='1.4' opacity='0.85'%3E%3Crect x='3' y='3' width='14' height='14'/%3E%3Crect x='7' y='7' width='6' height='6'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg fill='none' stroke='%23b98f4e' stroke-width='1.4' opacity='0.85'%3E%3Crect x='3' y='3' width='14' height='14'/%3E%3Crect x='7' y='7' width='6' height='6'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg fill='none' stroke='%23b98f4e' stroke-width='1.4' opacity='0.85'%3E%3Crect x='3' y='3' width='14' height='14'/%3E%3Crect x='7' y='7' width='6' height='6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position:
+    left top,
+    right top,
+    left bottom,
+    right bottom;
+  background-size: 20px 20px;
+}
+html[data-layout="flower"] .bento-grid .eyebrow {
+  color: var(--layout-gold);
+  letter-spacing: 3px;
+}
+html[data-layout="flower"] .bento-grid .card h2 {
+  letter-spacing: 0.08em;
+}
+/* 主页主按钮鎏金 */
+html[data-layout="flower"] .bento-grid .button.dark {
+  background: var(--layout-gold);
+  color: #fffdf4;
+}
+/* 播放按钮鎏金 */
+html[data-layout="flower"] .mp-play,
+html[data-layout="flower"] .mpb-play,
+html[data-layout="flower"] .mbb-play {
+  background: var(--layout-gold);
+  color: #fffdf4;
+}
+/* 页眉品牌生命之花标 */
+html[data-layout="flower"] .site-header .brand::before {
+  content: "";
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  margin-right: 9px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23b98f4e' stroke-width='3.5'%3E%3Ccircle cx='50' cy='50' r='24'/%3E%3Ccircle cx='50' cy='26' r='24'/%3E%3Ccircle cx='74' cy='38' r='24'/%3E%3Ccircle cx='74' cy='62' r='24'/%3E%3Ccircle cx='50' cy='74' r='24'/%3E%3Ccircle cx='26' cy='62' r='24'/%3E%3Ccircle cx='26' cy='38' r='24'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+  vertical-align: -5px;
+}
+
+/* ================= 暗夜鎏金 =================
+   深空底 · 鎏金描边 · 星尘微光 · 完整深色氛围接管 */
+:root[data-layout="darkgold"] {
+  /* color-scheme 由 layout.ts 经 resolveColorScheme 统一设为 dark */
+  --ink: #f0e9d6;
+  --muted: #a79c84;
+  --paper: #07080c;
+  --card: #141821;
+  --line: #2c3342;
+  --lime: #d4af6a;
+  --layout-gold: #d4af6a;
+  --layout-gold-bright: #f0d089;
+  --theme-muted: #a79c84;
+  --theme-prose: #d8cfb8;
+  --theme-surface: #171c26;
+  --theme-soft: #1f2532;
+  --theme-field: #0f131b;
+  --theme-image-bg: #1a1f2a;
+  --theme-line: #2c3342;
+  --theme-input-line: #3d465a;
+  --theme-accent-line: #d4af6a;
+  --theme-focus: #e8c87e;
+  --theme-accent-ink: #e8c87e;
+  --theme-on-accent: #1c1508;
+  --theme-button: #d4af6a;
+  --theme-button-hover: #e2c07f;
+  --theme-on-button: #1c1508;
+  --theme-chrome: #161b26;
+  --theme-chrome-line: #3d465a;
+  --theme-on-chrome: #f0e9d6;
+  --theme-clock: #171c26;
+  --theme-clock-ink: #f0e9d6;
+  --theme-clock-accent: #e8c87e;
+  --theme-clock-line: #3d465a;
+  --theme-danger: #f0a8a8;
+  --theme-number: #2c3342;
+  --theme-scrollbar: #3d465a;
+  --theme-track: #2c3342;
+}
+html[data-layout="darkgold"] .site-shell {
+  background:
+    radial-gradient(
+      1.5px 1.5px at 12% 22%,
+      rgba(240, 208, 137, 0.9),
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 32% 68%,
+      rgba(240, 208, 137, 0.65),
+      transparent 100%
+    ),
+    radial-gradient(
+      1.5px 1.5px at 58% 12%,
+      rgba(240, 208, 137, 0.75),
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 78% 42%,
+      rgba(240, 208, 137, 0.6),
+      transparent 100%
+    ),
+    radial-gradient(
+      2px 2px at 88% 78%,
+      rgba(240, 208, 137, 0.7),
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 45% 88%,
+      rgba(240, 208, 137, 0.55),
+      transparent 100%
+    ),
+    radial-gradient(
+      1.5px 1.5px at 5% 55%,
+      rgba(240, 208, 137, 0.6),
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 68% 90%,
+      rgba(240, 208, 137, 0.5),
+      transparent 100%
+    ),
+    radial-gradient(
+      900px 380px at 50% -8%,
+      rgba(212, 175, 106, 0.14),
+      transparent 65%
+    ),
+    radial-gradient(
+      700px 500px at 95% 105%,
+      rgba(212, 175, 106, 0.09),
+      transparent 60%
+    ),
+    var(--paper);
+}
+html[data-layout="darkgold"] .bento-grid .card {
+  background: linear-gradient(165deg, #161b26 0%, #0d1017 100%);
+  border: 1px solid rgba(212, 175, 106, 0.6);
+  border-radius: 14px;
+  box-shadow:
+    inset 0 1px 0 rgba(240, 208, 137, 0.18),
+    0 6px 26px rgba(0, 0, 0, 0.6);
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+html[data-layout="darkgold"] .bento-grid .card:hover {
+  border-color: rgba(240, 208, 137, 0.92);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 208, 137, 0.24),
+    0 8px 30px rgba(0, 0, 0, 0.65),
+    0 0 26px rgba(212, 175, 106, 0.22);
+}
+/* 卡片四角鎏金回纹饰 */
+html[data-layout="darkgold"] .bento-grid .card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cg fill='none' stroke='%23d4af6a' stroke-width='1.5' opacity='0.9'%3E%3Crect x='3' y='3' width='16' height='16'/%3E%3Crect x='8' y='8' width='6' height='6'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cg fill='none' stroke='%23d4af6a' stroke-width='1.5' opacity='0.9'%3E%3Crect x='3' y='3' width='16' height='16'/%3E%3Crect x='8' y='8' width='6' height='6'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cg fill='none' stroke='%23d4af6a' stroke-width='1.5' opacity='0.9'%3E%3Crect x='3' y='3' width='16' height='16'/%3E%3Crect x='8' y='8' width='6' height='6'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cg fill='none' stroke='%23d4af6a' stroke-width='1.5' opacity='0.9'%3E%3Crect x='3' y='3' width='16' height='16'/%3E%3Crect x='8' y='8' width='6' height='6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position:
+    left top,
+    right top,
+    left bottom,
+    right bottom;
+  background-size: 22px 22px;
+}
+/* 播放按钮鎏金 */
+html[data-layout="darkgold"] .mp-play,
+html[data-layout="darkgold"] .mpb-play,
+html[data-layout="darkgold"] .mbb-play {
+  background: linear-gradient(135deg, #f0d089 0%, #c69a4e 100%);
+  color: #1c1508;
+  box-shadow: 0 0 18px rgba(212, 175, 106, 0.4);
+}
+html[data-layout="darkgold"] .bento-grid .eyebrow {
+  color: var(--layout-gold-bright);
+}
+/* 页眉下一缕金线 */
+html[data-layout="darkgold"] .site-header {
+  border-bottom: 1px solid rgba(212, 175, 106, 0.16);
+}
+
+/* ================= 禅意侘寂 =================
+   大地色 · 亚麻噪点 · 手工不对称圆角 · 宁静 */
+:root[data-layout="wabi"] {
+  --ink: #3b342a;
+  --muted: #8a7c66;
+  --paper: #e7dcc4;
+  --card: #f1e8d3;
+  --line: #d6c9b0;
+  --layout-clay: #a9805a;
+}
+html[data-layout="wabi"] .site-shell {
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.42 0 0 0 0 0.36 0 0 0 0 0.29 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+html[data-layout="wabi"] .bento-grid .card {
+  background-color: var(--card);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.42 0 0 0 0 0.36 0 0 0 0 0.29 0 0 0 0.13 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  border: none;
+  /* 手工撕纸边：SVG 噪点置换遮罩（回退时不对称圆角仍有效） */
+  border-radius: 20px;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.045' numOctaves='4' seed='7' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='18'/%3E%3C/filter%3E%3Crect x='8' y='8' width='284' height='284' rx='24' fill='%23fff' filter='url(%23r)'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.045' numOctaves='4' seed='7' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='18'/%3E%3C/filter%3E%3Crect x='8' y='8' width='284' height='284' rx='24' fill='%23fff' filter='url(%23r)'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  box-shadow: none;
+  /* drop-shadow 跟随撕纸形状，比 box-shadow 更贴合 */
+  filter: drop-shadow(0 8px 16px rgba(122, 100, 70, 0.22));
+}
+/* 播放按钮陶土质感 */
+html[data-layout="wabi"] .mp-play,
+html[data-layout="wabi"] .mpb-play,
+html[data-layout="wabi"] .mbb-play {
+  background: #d8c9ac;
+  color: #5a4c38;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.55),
+    inset 0 -2px 4px rgba(122, 100, 70, 0.25),
+    0 3px 8px rgba(122, 100, 70, 0.3);
+}
+/* 错落的手工感：偶数位圆角取另一组（编辑/非编辑模式兼容） */
+html[data-layout="wabi"] .bento-grid .bento-row > :nth-child(even).card,
+html[data-layout="wabi"] .bento-grid .bento-row > :nth-child(even) .card {
+  border-radius: 26px 16px 28px 18px / 16px 28px 18px 26px;
+}
+html[data-layout="wabi"] .bento-grid .eyebrow {
+  color: var(--layout-clay);
+  letter-spacing: 3px;
+}
+html[data-layout="wabi"] .bento-grid .card h2 {
+  font-weight: 550;
+  letter-spacing: 0.12em;
+}
+
+/* ================= 主题选择器缩略图呼应 ================= */
+.theme-option[data-layout-option="taiji"] .theme-thumbnail {
+  border: 1px solid #b5362a;
+  background: #f5f2e9;
+}
+.theme-option[data-layout-option="flower"] .theme-thumbnail {
+  border: 1px solid #b98f4e;
+  background: #faf6ec;
+  border-radius: 18px;
+}
+.theme-option[data-layout-option="darkgold"] .theme-thumbnail {
+  border: 1px solid rgba(212, 175, 106, 0.6);
+  background: #141821;
+}
+.theme-option[data-layout-option="darkgold"] .theme-thumb-header strong,
+.theme-option[data-layout-option="darkgold"] .theme-thumb-clock {
+  color: #e8c87e;
+}
+.theme-option[data-layout-option="wabi"] .theme-thumbnail {
+  border: 1px solid #d6c9b0;
+  background: #f3eee1;
+  border-radius: 14px 20px 12px 22px / 18px 14px 22px 12px;
+}
+
+/* ================= 移动端适配（≤1100px） ================= */
+@media (max-width: 1100px) {
+  /* 生命之花：水印缩小，单列下更克制 */
+  html[data-layout="flower"] .site-shell {
+    background-size: 520px 520px;
+    background-position: center 10%;
+  }
+  /* 太极九宫：中宫描边收紧 */
+  html[data-layout="taiji"] .bento-grid .middle-row > :nth-child(2) {
+    outline-offset: 2px;
+  }
+  /* 暗夜鎏金：减少星点，省性能 */
+  html[data-layout="darkgold"] .site-shell {
+    background:
+      radial-gradient(
+        1.5px 1.5px at 20% 25%,
+        rgba(240, 208, 137, 0.75),
+        transparent 100%
+      ),
+      radial-gradient(
+        1px 1px at 75% 55%,
+        rgba(240, 208, 137, 0.6),
+        transparent 100%
+      ),
+      radial-gradient(
+        900px 380px at 50% -8%,
+        rgba(212, 175, 106, 0.14),
+        transparent 65%
+      ),
+      var(--paper);
+  }
+  /* 禅意侘寂：圆角收敛，避免小卡变形 */
+  html[data-layout="wabi"] .bento-grid .card {
+    border-radius: 16px 22px 15px 24px / 20px 16px 24px 15px;
+  }
+  html[data-layout="wabi"] .bento-grid .bento-row > :nth-child(even).card,
+  html[data-layout="wabi"] .bento-grid .bento-row > :nth-child(even) .card {
+    border-radius: 22px 15px 24px 16px / 15px 24px 16px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-layout="darkgold"] .bento-grid .card {
+    transition: none;
+  }
+}

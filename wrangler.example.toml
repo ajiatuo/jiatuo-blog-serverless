@@ -1,0 +1,19 @@
+name = "jiatuo-blog-serverless"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+[assets]
+directory = "./dist/client"
+binding = "ASSETS"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "jiatuo-blog"
+database_id = "YOUR_D1_DATABASE_ID_HERE"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "jiatuo-blog-media"
+
+[vars]
+APP_URL = "https://your-domain.com"

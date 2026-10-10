@@ -1,0 +1,153 @@
+/* 每日共修卡片：暖烛光仪式感，深浅主题下固定暖色 */
+.groupsession-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #241708 0%, #3d2412 55%, #54331a 100%);
+  border: 1px solid rgba(255, 200, 140, 0.18);
+  color: #f7ead9;
+}
+
+.groupsession-card h2 {
+  color: #fff6e8;
+  margin: 6px 0 4px;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.gs-eyebrow {
+  color: #e8b96f;
+}
+
+/* 呼吸光晕：8 秒一次的缓慢呼吸 */
+.gs-glow {
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 190, 110, 0.35) 0%,
+    rgba(255, 170, 90, 0.12) 55%,
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: gs-breathe 8s ease-in-out infinite;
+}
+
+@keyframes gs-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.9;
+  }
+}
+
+.gs-theme {
+  font-size: 16px;
+  color: #ffe9c9;
+  margin: 8px 0;
+  line-height: 1.7;
+}
+
+.gs-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #d9b98c;
+  margin: 0 0 14px;
+}
+
+.groupsession-card .button {
+  position: relative;
+  z-index: 1;
+}
+
+.gs-reserve,
+.gs-join {
+  background: #f0b45c;
+  color: #2b1a08;
+  border: none;
+  font-weight: 700;
+}
+
+.gs-reserve:hover,
+.gs-join:hover {
+  background: #f6c476;
+}
+
+.gs-reserved {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #ffe9c9;
+  margin: 0 0 6px;
+}
+
+/* 进行中状态 */
+.gs-live {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.gs-live-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffd9a0;
+}
+
+.gs-live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff8a5c;
+  animation: gs-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes gs-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+.gs-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #c9a878;
+}
+
+.gs-count-note {
+  opacity: 0.75;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-glow,
+  .gs-live-dot {
+    animation: none;
+  }
+}

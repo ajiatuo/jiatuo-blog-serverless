@@ -1,0 +1,239 @@
+/* My Blog品牌区样式：国际疗愈中心风（粗黑体、大留白、暖白+大地色系）。
+   全用主题变量，深浅主题自动适配。parent 需在入口 import "./brand.css"。 */
+
+.brand-eyebrow {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+
+/* ---- Hero ---- */
+.brand-hero {
+  text-align: center;
+  padding: 72px 24px 64px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.brand-title {
+  font-size: clamp(34px, 6vw, 58px);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: 1px;
+  margin: 0 0 20px;
+  color: var(--ink);
+}
+.brand-sub {
+  max-width: 600px;
+  margin: 0 auto 36px;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+.brand-ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 64px;
+}
+.brand-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 14px 34px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+}
+.brand-cta.primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.brand-cta.ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.brand-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: left;
+}
+.brand-pillar {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px 24px;
+}
+.brand-pillar-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.brand-pillar h3 {
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+.brand-pillar p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ---- 关于 ---- */
+.about-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+.about-title {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 900;
+  margin: 0 0 18px;
+}
+.about-intro {
+  font-size: 16px;
+  line-height: 2;
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 0 40px;
+}
+.about-services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.about-service {
+  display: flex;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+}
+.about-service-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+.about-service h3 {
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+.about-service p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+}
+.about-contact {
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+}
+.about-contact h3 {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+.about-contact p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 6px 0;
+}
+
+/* ---- 页脚 ---- */
+.site-footer {
+  border-top: 1px solid var(--line);
+  margin-top: 48px;
+  padding: 48px 24px 0;
+  background: var(--card);
+}
+.site-footer-grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 36px;
+}
+.site-footer-brand strong {
+  font-size: 20px;
+  font-weight: 900;
+}
+.site-footer-brand p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 10px 0 0;
+}
+.site-footer-links strong,
+.site-footer-contact strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.site-footer-links button {
+  display: block;
+  background: none;
+  border: none;
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+  text-align: left;
+}
+.site-footer-contact p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 6px 0;
+}
+.site-footer-bottom {
+  max-width: 960px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+  padding: 18px 0 24px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---- 手机端单列 ---- */
+@media (max-width: 640px) {
+  .brand-hero {
+    padding: 52px 20px 48px;
+  }
+  .brand-ctas {
+    margin-bottom: 44px;
+  }
+  .brand-cta {
+    min-height: 48px;
+    width: 100%;
+    justify-content: center;
+  }
+  .brand-pillars,
+  .about-services,
+  .site-footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

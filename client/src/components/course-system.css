@@ -1,0 +1,313 @@
+/* 课程体系组件样式：课程详情 / 销售落地页 / 师资页
+   国际疗愈中心风格：粗黑体标题、大留白、胶囊 CTA、暖白底，手机端单列。
+   全部使用主题 CSS 变量，随主题自动变色。 */
+
+/* ---------- 课程详情 ---------- */
+.course-detail-dialog .dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.course-detail-head {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.course-detail-cover {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  flex: none;
+}
+.course-detail-meta {
+  min-width: 0;
+  flex: 1;
+}
+.course-detail-meta h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 6px;
+  letter-spacing: 0.5px;
+}
+.course-detail-desc {
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.course-detail-stats {
+  display: flex;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+.course-detail-stats strong {
+  color: var(--ink);
+}
+.course-detail-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 10px 22px;
+}
+.course-detail-outline-title {
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.course-detail-outline {
+  margin: 0;
+}
+
+/* ---------- 销售落地页 ---------- */
+.sales-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 20px 64px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.sales-hero {
+  text-align: center;
+  padding: 24px 0 40px;
+}
+.sales-hero .eyebrow {
+  display: block;
+  margin-bottom: 16px;
+}
+.sales-hero h1 {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: 1px;
+  margin: 0 0 18px;
+}
+.sales-sub {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 28px;
+}
+.sales-cta-row {
+  display: flex;
+  justify-content: center;
+}
+.sales-cta {
+  border-radius: 999px;
+  padding: 14px 44px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.sales-cta-wide {
+  width: 100%;
+  margin-top: 20px;
+}
+.sales-section {
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+}
+.sales-section h2 {
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 24px;
+  letter-spacing: 1px;
+}
+.sales-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+.sales-highlights li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  line-height: 1.7;
+}
+.sales-check {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  display: grid;
+  place-items: center;
+}
+.sales-outline {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  counter-reset: week;
+}
+.sales-outline li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+.sales-outline strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.sales-outline span {
+  color: var(--muted);
+  font-size: 14px;
+}
+.sales-note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+.sales-plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.sales-plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 22px 8px 18px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+}
+.sales-plan.hot {
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+.sales-hot-tag {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  padding: 2px 12px;
+  white-space: nowrap;
+}
+.sales-plan-label {
+  font-size: 14px;
+  opacity: 0.8;
+}
+.sales-plan-price {
+  font-size: 26px;
+  font-weight: 900;
+}
+.sales-plan-term {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* ---------- 师资页 ---------- */
+.teacher-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 20px 64px;
+}
+.teacher-hero {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.teacher-hero h1 {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin: 12px 0 0;
+}
+.teacher-profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.teacher-avatar-placeholder {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  background: var(--card);
+  border: 2px dashed var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  padding: 16px;
+  text-align: center;
+}
+.teacher-profile h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+.teacher-tagline {
+  color: var(--muted);
+  margin: 0;
+}
+.teacher-section {
+  margin-bottom: 32px;
+}
+.teacher-section h3 {
+  font-size: 19px;
+  font-weight: 800;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.teacher-section p {
+  line-height: 1.9;
+  color: var(--ink);
+  margin: 0;
+}
+.teacher-feedback {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.teacher-feedback li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+  line-height: 1.8;
+}
+
+/* ---------- 手机端 ---------- */
+@media (max-width: 560px) {
+  .sales-hero h1 {
+    font-size: 32px;
+  }
+  .sales-plans {
+    grid-template-columns: 1fr;
+  }
+  .course-detail-head {
+    flex-direction: column;
+  }
+  .course-detail-cover {
+    width: 96px;
+    height: 96px;
+  }
+}
